@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer: React.FC = () => {
+function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer>

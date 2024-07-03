@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/noteDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://127.0.0.1:27017/noteDB");
 
 const noteSchema = new mongoose.Schema({
   title: String,
@@ -33,7 +33,8 @@ app.post("/notes", async (req, res) => {
 // Read notes
 app.get("/notes", async (req, res) => {
   const notes = await Note.find();
-  res.status(200).send(notes);
+  const reversedNotes = notes.reverse();
+  res.status(200).send(reversedNotes);
 });
 
 // Delete note
